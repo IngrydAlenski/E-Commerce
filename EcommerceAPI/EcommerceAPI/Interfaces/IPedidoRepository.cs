@@ -2,7 +2,7 @@
 
 namespace EcommerceAPI.Interfaces
 {
-    public interface IPedido
+    public interface IPedidoRepository
     {
         List<Pedido> ListarTodos();
         Pedido BuscarPorId(int id);

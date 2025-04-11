@@ -2,7 +2,7 @@
 
 namespace EcommerceAPI.Interfaces
 {
-    public interface IPagamentos
+    public interface IPagamentoRepository
     {
         List<Pagamento> ListarTodos();
         Pagamento BuscarPorId(int id);
