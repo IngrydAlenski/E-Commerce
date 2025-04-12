@@ -1,18 +1,18 @@
-﻿using EcommerceAPI.Interfaces;
+﻿using EcommerceAPI.Context;
+using EcommerceAPI.Interfaces;
 using EcommerceAPI.Models;
 
 namespace EcommerceAPI.Repositories
 {
-    public class PagamentoRepository
+    public class PagamentoRepository : IPagamentoRepository
     {
-        public class PagamentoRepository : IPagamentoRepository
+        private EcommerceContext _context;
 
-
-           //Injetar context
-
-
-
+        public PagamentoRepository(EcommerceContext context)
         {
+            this._context = context;
+        }
+        
             public void Atualizar(int id, Pagamento pagamento)
             {
                 throw new NotImplementedException();
@@ -25,7 +25,7 @@ namespace EcommerceAPI.Repositories
 
             public void Cadastrar(Pagamento pagamento)
             {
-                throw new NotImplementedException();
+                _context.Pagamentos.Add(pagamento);
             }
 
             public void Deletar(int id)
@@ -35,8 +35,8 @@ namespace EcommerceAPI.Repositories
 
             public List<Pagamento> ListarTodos()
             {
-                throw new NotImplementedException();
+                return _context.Pagamentos.ToList();
             }
         }
     }
-}
+

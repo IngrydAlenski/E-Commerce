@@ -20,5 +20,13 @@ namespace EcommerceAPI.Controllers
             _context = context;
             clienteRepository = new ClienteRepository(_context);
         }
+
+        [HttpGet]
+
+        public IActionResult ListarTodos()
+        {
+            return Ok(clienteRepository.ListarTodos());
+
+        }
     }
 }

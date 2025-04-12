@@ -1,5 +1,6 @@
 ﻿using EcommerceAPI.Context;
 using EcommerceAPI.Interfaces;
+using EcommerceAPI.Repositories;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
@@ -11,12 +12,12 @@ namespace EcommerceAPI.Controllers
     {
         private readonly EcommerceContext _context;
 
-        private IItemPedidoRepository itempedidoRepository;
+        private Interfaces.IItemPedidoRepository itempedidoRepository;
 
         public ItemPedidoController(EcommerceContext context)
         {
             _context = context;
-            itempedidoRepository = new ItemPedidoRepository(_context);
+            itempedidoRepository = new Repositories.ItemPedidoRepository(_context);
         }
     }
 }

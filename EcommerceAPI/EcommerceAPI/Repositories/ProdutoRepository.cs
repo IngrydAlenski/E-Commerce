@@ -35,6 +35,11 @@ namespace EcommerceAPI.Repositories
            _context.Produtos.Add(produto);
         }
 
+        public void Deletar(int id)
+        {
+            throw new NotImplementedException();
+        }
+
         public List<Produto> ListarTodos()
         {
             return _context.Produtos.ToList();

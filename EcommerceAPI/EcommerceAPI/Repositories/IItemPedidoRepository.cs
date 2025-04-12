@@ -4,24 +4,28 @@ using EcommerceAPI.Models;
 
 namespace EcommerceAPI.Repositories
 {
-    public class PedidoRepository :IPedidoRepository
+    public class ItemPedidoRepository : IItemPedidoRepository
     {
         private readonly EcommerceContext _context;
-        public PedidoRepository(EcommerceContext context)
+
+        // METODO COSTRUTOR
+        //QUANDO CRIAR UM OBJETO O QUE EU PRECISO TER?
+        public ItemPedidoRepository(EcommerceContext context)
         {
             _context = context;
         }
-        public void Atualizar(int id, Pedido pedido)
+
+        public void Atualizar(int id, ItemPedido itempedido)
         {
             throw new NotImplementedException();
         }
 
-        public Pedido BuscarPorId(int id)
+        public ItemPedido BuscarPorId(int id)
         {
             throw new NotImplementedException();
         }
 
-        public void Cadastrar(Pedido pedido)
+        public void Cadastrar(ItemPedido itemPedido)
         {
             throw new NotImplementedException();
         }
@@ -31,7 +35,7 @@ namespace EcommerceAPI.Repositories
             throw new NotImplementedException();
         }
 
-        public List<Pedido> ListarTodos()
+        public List<ItemPedido> ListarTodos()
         {
             throw new NotImplementedException();
         }

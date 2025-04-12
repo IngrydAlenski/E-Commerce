@@ -4,7 +4,7 @@ using EcommerceAPI.Models;
 
 namespace EcommerceAPI.Repositories
 
- // 1- Cria a classe 
+ // 1- Cria a classe Repositories
 // 2- Herda da interface
 // 3- Da um ctrl.e implementa
 //Injetar Contexto
@@ -14,6 +14,8 @@ namespace EcommerceAPI.Repositories
         //Injeta contexto
         private  readonly EcommerceContext _context;
 
+        //Metodo costrutor e o metodo que tem o mesmo nome da classe
+        //Argumento do construtor, e oque esta dentro dos parenteses 
         public ClienteRepository(EcommerceContext context)
         {
             _context = context;
@@ -36,7 +38,7 @@ namespace EcommerceAPI.Repositories
 
         public void Cadastrar(Cliente cliente)
         {
-            throw new NotImplementedException();
+            _context.Clientes.Add(cliente);
         }
 
         public void Deletar(int id)
@@ -46,7 +48,7 @@ namespace EcommerceAPI.Repositories
 
         public List<Cliente> ListarTodos()
         {
-            throw new NotImplementedException();
+            return _context.Clientes.ToList();
         }
     }
 }
