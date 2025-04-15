@@ -10,22 +10,18 @@ namespace EcommerceAPI.Controllers
     [ApiController]
     public class PagamentoController : ControllerBase
     {
+        private IPagamentoRepository PagamentoRepository;
 
-        private readonly EcommerceContext _context;
-
-        private IPagamentoRepository pagamentoRepository;
-
-        public PagamentoController(EcommerceContext context)
+        public PagamentoController(IPagamentoRepository pagamentoRepository)
         {
-            _context = context;
-            pagamentoRepository = new PagamentoRepository(_context);
+              PagamentoRepository = pagamentoRepository;
         }
 
         [HttpGet]
 
         public IActionResult ListarTodos()
         {
-            return Ok(pagamentoRepository.ListarTodos());
+            return Ok(PagamentoRepository.ListarTodos());
           
         }
     }
