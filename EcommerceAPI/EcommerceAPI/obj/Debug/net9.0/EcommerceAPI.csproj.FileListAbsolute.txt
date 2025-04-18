@@ -318,7 +318,6 @@ C:\Users\FIC\Desktop\Ingryd\E-Commerce\EcommerceAPI\EcommerceAPI\obj\Debug\net9.
 C:\Users\FIC\Desktop\Ingryd\E-Commerce\EcommerceAPI\EcommerceAPI\obj\Debug\net9.0\staticwebassets\msbuild.buildMultiTargeting.EcommerceAPI.props
 C:\Users\FIC\Desktop\Ingryd\E-Commerce\EcommerceAPI\EcommerceAPI\obj\Debug\net9.0\staticwebassets\msbuild.buildTransitive.EcommerceAPI.props
 C:\Users\FIC\Desktop\Ingryd\E-Commerce\EcommerceAPI\EcommerceAPI\obj\Debug\net9.0\staticwebassets.pack.json
-C:\Users\FIC\Desktop\Ingryd\E-Commerce\EcommerceAPI\EcommerceAPI\obj\Debug\net9.0\staticwebassets.upToDateCheck.txt
 C:\Users\FIC\Desktop\Ingryd\E-Commerce\EcommerceAPI\EcommerceAPI\obj\Debug\net9.0\Ecommerc.C58B2BB1.Up2Date
 C:\Users\FIC\Desktop\Ingryd\E-Commerce\EcommerceAPI\EcommerceAPI\obj\Debug\net9.0\EcommerceAPI.dll
 C:\Users\FIC\Desktop\Ingryd\E-Commerce\EcommerceAPI\EcommerceAPI\obj\Debug\net9.0\refint\EcommerceAPI.dll

@@ -24,7 +24,7 @@ builder.Services.AddControllers();
 builder.Services.AddSwaggerGen();
 //////////////////////////////////////////////
 ///
-builder.Services.AddScoped<EcommerceContext, EcommerceContext>();
+builder.Services.AddDbContext<EcommerceContext, EcommerceContext>();
 builder.Services.AddTransient<IPedidoRepository, PedidoRepository>();
 builder.Services.AddTransient<IProdutoRepository, ProdutoRepository>();
 builder.Services.AddTransient<IClienteRepository, ClienteRepository>();

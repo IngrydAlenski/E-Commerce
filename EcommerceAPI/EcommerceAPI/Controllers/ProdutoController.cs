@@ -39,6 +39,42 @@ namespace EcommerceAPI.Controllers
             return Ok();
 
         }
+        [HttpGet("{id}")]
+        public IActionResult BuscarProdutoPorId(int id)
+        {
+            var produto = ProdutoRepository.BuscarPorId(id);
+
+            if (produto == null)
+                return NotFound(); // Retorna 404 se não encontrar o produto
+
+            return Ok(produto); // Retorna 200 com os dados do produto
+        }
+
+        [HttpDelete("{id}")]
+        public IActionResult DeletarProduto(int id)
+        {
+            var produtoBuscado = ProdutoRepository.BuscarPorId(id);
+
+            if (produtoBuscado == null)
+                return NotFound(); // 404 se não existir
+
+            ProdutoRepository.Deletar(id);
+
+            return NoContent(); // 204 - Sucesso na exclusão
+        }
+        [HttpPut("{id}")]
+        public IActionResult AtualizarProduto(int id, Produto prod)
+        {
+            var produtoBuscado = ProdutoRepository.BuscarPorId(id);
+
+            if (produtoBuscado == null)
+                return NotFound(); // 404 se não existir
+
+            ProdutoRepository.Atualizar(id, prod);
+
+            return NoContent(); // 204 - Sucesso, sem conteúdo de retorno
+        }
+
 
     }
     

@@ -11,9 +11,16 @@ namespace EcommerceAPI.Repositories
         {
             _context = context;
         }
-        public void Atualizar(int id, Pedido pedido)
+        public void Atualizar(int id, Pedido pedidonovo)
         {
-            throw new NotImplementedException();
+            Pedido pedidoencontrado = _context.Pedidos.Find(id);
+
+            if (pedidoencontrado == null)
+            {
+                throw new Exception();
+            }
+            pedidoencontrado.StatusPedido=pedidonovo.StatusPedido;
+            pedidoencontrado.DataPedido=pedidonovo.DataPedido;
         }
 
         public Pedido BuscarPorId(int id)

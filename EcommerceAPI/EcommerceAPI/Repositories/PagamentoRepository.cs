@@ -13,26 +13,45 @@ namespace EcommerceAPI.Repositories
             this._context = context;
         }
         
-            public void Atualizar(int id, Pagamento pagamento)
+            public void Atualizar(int id, Pagamento pagamentoNovo)
             {
-                throw new NotImplementedException();
+            Pagamento pagamentoencontrado = _context.Pagamentos.Find(id);
+
+            if (pagamentoencontrado == null)
+            {
+                throw new Exception();
             }
+            pagamentoencontrado.FormaPagamento = pagamentoNovo.FormaPagamento;
+            pagamentoencontrado.DataPagamento = pagamentoNovo.DataPagamento;
+            pagamentoencontrado.StatusPagamento = pagamentoNovo.StatusPagamento;
+            pagamentoencontrado.IdPedido = pagamentoNovo.IdPedido;
+
+            _context.SaveChanges();
+        }
 
             public Pagamento BuscarPorId(int id)
             {
-                throw new NotImplementedException();
-            }
+            return _context.Pagamentos.FirstOrDefault(p => p.IdPagamento == id);
+        }
 
             public void Cadastrar(Pagamento pagamento)
             {
-                _context.Pagamentos.Add(pagamento);
-            }
+             
+            _context.Pagamentos.Add(pagamento);
+            _context.SaveChanges();
+             }
 
             public void Deletar(int id)
             {
-                throw new NotImplementedException();
+            Pagamento pagamentobuscado = _context.Pagamentos.Find(id);
+
+            if (pagamentobuscado != null)
+            {
+                _context.Pagamentos.Remove(pagamentobuscado);
+                _context.SaveChanges();
             }
 
+            }
             public List<Pagamento> ListarTodos()
             {
                 return _context.Pagamentos.ToList();
