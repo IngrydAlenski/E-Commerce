@@ -69,5 +69,20 @@ namespace EcommerceAPI.Controllers
             return NoContent(); // 204 - Sucesso, sem conteúdo de retorno
         }
 
+
+        [HttpGet("{email}/{senha}")]
+        public IActionResult Login(string email, string senha)
+        {
+            var cliente = ClienteRepository.BuscarPorEmailSenha(email, senha);
+
+            if (cliente == null)
+            {
+                return NotFound();
+            }                
+
+            return Ok(cliente);
+
+        }
+
     }
 }

@@ -21,29 +21,37 @@ namespace EcommerceAPI.Repositories
             _context = context;
         }
 
-        public void Atualizar(int id, Cliente cliente) // Implementa
+        public void Atualizar(int id, Cliente clientenovo) // Implementa
         {
-            Cliente clienteencontrado = _context.Clientes
-                .FirstOrDefault(x => x.IdCliente == id);  // Busca o produto pelo ID
+            // Acho o cliente que desejo
+            var clienteEncontrado = _context.Clientes.FirstOrDefault(c => c.IdCliente == id);
 
-            if (cliente != null)  // Verifica se o produto foi encontrado
+            if (clienteEncontrado == null)
             {
-                clienteencontrado.NomeCompleto = cliente.NomeCompleto;  // Atualiza as propriedades
-               
-
-                _context.SaveChanges();  // Persiste as alterações no banco
+                throw new ArgumentException("Cliente não encontrado");
             }
-        }
-     
 
-        public Cliente BuscarPorE_mailSenha(string senha, string E_mail)
+            // Campo a campo alterado 
+            clienteEncontrado.NomeCompleto = clientenovo.NomeCompleto;
+            clienteEncontrado.Email = clientenovo.Email;
+            clienteEncontrado.Telefone = clientenovo.Telefone;
+            clienteEncontrado.Endereco = clientenovo.Endereco;
+            clienteEncontrado.Senha = clientenovo.Senha;
+            clienteEncontrado.DataCadastro = clientenovo.DataCadastro;
+
+            _context.SaveChanges();
+        }
+        public Cliente? BuscarPorEmailSenha(string senha, string E_mail)
         {
-            throw new NotImplementedException();
+            //Encontrar o cliente que possui o email e senha fornecidos 
+
+            Cliente? clienteEncontrado = _context.Clientes.FirstOrDefault(c => c.Email == E_mail && c.senha);
+            return clienteEncontrado;
         }
 
         public Cliente BuscarPorId(int id)
         {
-            return _context.Clientes.FirstOrDefault(p => p.IdCliente == id);
+            return _context.Clientes.FirstOrDefault(c => c.IdCliente == id);
         }
 
         public void Cadastrar(Cliente cliente)
@@ -56,11 +64,12 @@ namespace EcommerceAPI.Repositories
         {
             Cliente clientebuscado = _context.Clientes.Find(id);
 
-            if (clientebuscado != null)
+            if (clientebuscado == null)
             {
-                _context.Clientes.Remove(clientebuscado);
-                _context.SaveChanges();
+                throw new ArgumentNullException("Cliente não encontrado");
             }
+            _context.Clientes.Remove(clientebuscado);
+            _context.SaveChanges();
         }
         public List<Cliente> ListarTodos()
         {

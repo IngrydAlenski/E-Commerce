@@ -5,6 +5,8 @@ namespace EcommerceAPI.Models;
 
 public partial class Cliente
 {
+    internal bool senha;
+
     public int IdCliente { get; set; }
 
     public string NomeCompleto { get; set; } = null!;

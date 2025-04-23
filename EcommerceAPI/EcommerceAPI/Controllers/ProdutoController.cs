@@ -74,8 +74,7 @@ namespace EcommerceAPI.Controllers
 
             return NoContent(); // 204 - Sucesso, sem conteúdo de retorno
         }
-
-
+       
     }
     
 }
