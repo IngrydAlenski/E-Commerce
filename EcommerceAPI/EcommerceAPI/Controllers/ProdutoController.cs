@@ -1,4 +1,5 @@
 ﻿using EcommerceAPI.Context;
+using EcommerceAPI.DTO;
 using EcommerceAPI.Interfaces;
 using EcommerceAPI.Models;
 using EcommerceAPI.Repositories;
@@ -30,7 +31,7 @@ namespace EcommerceAPI.Controllers
         // Cadastrar produto
         [HttpPost]
                                              // "PROD" esse nome poder ser qualquer um
-        public IActionResult CadastrarProduto(Produto prod)
+        public IActionResult CadastrarProduto(CadastrarProtudoDTO prod)
         {
             //1 Coloco o produto no banco de dados
             ProdutoRepository.Cadastrar(prod);
@@ -63,7 +64,7 @@ namespace EcommerceAPI.Controllers
             return NoContent(); // 204 - Sucesso na exclusão
         }
         [HttpPut("{id}")]
-        public IActionResult AtualizarProduto(int id, Produto prod)
+        public IActionResult AtualizarProduto(int id, CadastrarProtudoDTO prod)
         {
             var produtoBuscado = ProdutoRepository.BuscarPorId(id);
 

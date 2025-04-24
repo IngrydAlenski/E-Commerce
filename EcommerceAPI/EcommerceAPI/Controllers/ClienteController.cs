@@ -1,9 +1,11 @@
 ﻿using EcommerceAPI.Context;
+using EcommerceAPI.DTO;
 using EcommerceAPI.Interfaces;
 using EcommerceAPI.Models;
 using EcommerceAPI.Repositories;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Identity.Client;
 
 namespace EcommerceAPI.Controllers
 {
@@ -26,7 +28,7 @@ namespace EcommerceAPI.Controllers
         }
 
         [HttpPost]
-        public IActionResult CadastrarProduto(Cliente cliente)
+        public IActionResult CadastrarCliente(CadastrarCliente cliente)
         {
          ClienteRepository.Cadastrar(cliente);
 
@@ -34,22 +36,22 @@ namespace EcommerceAPI.Controllers
         }
 
         [HttpGet("{id}")]
-        public IActionResult BuscarProdutoPorId(int id)
+        public IActionResult BuscarClientePorId(int id)
         {
-            var produto = ClienteRepository.BuscarPorId(id);
+            var cliente = ClienteRepository.BuscarPorId(id);
 
-            if (produto == null)
+            if (cliente == null)
                 return NotFound(); // Retorna 404 se não encontrar o produto
 
-            return Ok(produto); // Retorna 200 com os dados do produto
+            return Ok(cliente); // Retorna 200 com os dados do produto
         }
 
         [HttpDelete("{id}")]
-        public IActionResult DeletarProduto(int id)
+        public IActionResult DeletarCliente(int id)
         {
-            var produtoBuscado = ClienteRepository.BuscarPorId(id);
+            var clienteBuscado = ClienteRepository.BuscarPorId(id);
 
-            if (produtoBuscado == null)
+            if (clienteBuscado == null)
                 return NotFound(); // 404 se não existir
 
             ClienteRepository.Deletar(id);
@@ -57,7 +59,7 @@ namespace EcommerceAPI.Controllers
             return NoContent(); // 204 - Sucesso na exclusão
         }
         [HttpPut("{id}")]
-        public IActionResult AtualizarProduto(int id, Cliente cliente)
+        public IActionResult AtualizarCliente(int id, CadastrarCliente cliente)
         {
             var clienteBuscado = ClienteRepository.BuscarPorId(id);
 
@@ -81,8 +83,13 @@ namespace EcommerceAPI.Controllers
             }                
 
             return Ok(cliente);
+        }
+        [HttpGet("/buscar/{Nome}")]
+
+        public IActionResult BuscarPorNome(string nome)
+        {
+            return Ok(ClienteRepository.BuscarClientePorNome(nome));
 
         }
-
     }
 }

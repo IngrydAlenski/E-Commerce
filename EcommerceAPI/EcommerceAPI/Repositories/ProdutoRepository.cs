@@ -1,5 +1,6 @@
 ﻿using System.Collections.Concurrent;
 using EcommerceAPI.Context;
+using EcommerceAPI.DTO;
 using EcommerceAPI.Interfaces;
 using EcommerceAPI.Models;
 
@@ -20,7 +21,7 @@ namespace EcommerceAPI.Repositories
         {
             _context = context;  
         }
-        public void Atualizar(int id, Produto produto)
+        public void Atualizar(int id, CadastrarProtudoDTO produto)
         {
             Produto produtoencontrado = _context.Produtos.Find(id);
 
@@ -43,9 +44,19 @@ namespace EcommerceAPI.Repositories
           return _context.Produtos.FirstOrDefault(p => p.IdProduto == id);
         }
 
-        public void Cadastrar(Produto produto)
+        public void Cadastrar(CadastrarProtudoDTO produto)
         {
-            _context.Produtos.Add(produto);
+            Produto produtocadastro = new Produto
+            {
+                NomeProduto = produto.NomeProduto,
+                DescricaoProduto = produto.DescricaoProduto,
+                Preco = produto.Preco,
+                CategoriaProduto = produto.CategoriaProduto,
+                EstoqueDisponivel = produto.EstoqueDisponivel,
+                ImagemProduto = produto.ImagemProduto,
+            };
+
+            _context.Produtos.Add(produtocadastro);
 
             _context.SaveChanges();
         }

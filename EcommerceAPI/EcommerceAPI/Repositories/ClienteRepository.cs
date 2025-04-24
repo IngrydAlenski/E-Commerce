@@ -1,4 +1,5 @@
 ﻿using EcommerceAPI.Context;
+using EcommerceAPI.DTO;
 using EcommerceAPI.Interfaces;
 using EcommerceAPI.Models;
 
@@ -21,7 +22,7 @@ namespace EcommerceAPI.Repositories
             _context = context;
         }
 
-        public void Atualizar(int id, Cliente clientenovo) // Implementa
+        public void Atualizar(int id, CadastrarCliente clientenovo) // Implementa
         {
             // Acho o cliente que desejo
             var clienteEncontrado = _context.Clientes.FirstOrDefault(c => c.IdCliente == id);
@@ -41,6 +42,14 @@ namespace EcommerceAPI.Repositories
 
             _context.SaveChanges();
         }
+
+        public List<Cliente> BuscarClientePorNome(string nome)
+        {
+            var ListaClientes = _context.Clientes.Where(c => c.NomeCompleto == nome).ToList();
+
+            return ListaClientes;
+        }
+
         public Cliente? BuscarPorEmailSenha(string senha, string E_mail)
         {
             //Encontrar o cliente que possui o email e senha fornecidos 
@@ -54,7 +63,7 @@ namespace EcommerceAPI.Repositories
             return _context.Clientes.FirstOrDefault(c => c.IdCliente == id);
         }
 
-        public void Cadastrar(Cliente cliente)
+        public void Cadastrar(CadastrarCliente cliente)
         {
             _context.Clientes.Add(cliente);
             _context.SaveChanges();

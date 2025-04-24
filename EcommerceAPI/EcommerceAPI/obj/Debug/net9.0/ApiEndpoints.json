@@ -27,6 +27,27 @@
   },
   {
     "ContainingType": "EcommerceAPI.Controllers.ClienteController",
+    "Method": "Login",
+    "RelativePath": "api/Cliente/{email}/{senha}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "email",
+        "Type": "System.String",
+        "IsRequired": true
+      },
+      {
+        "Name": "senha",
+        "Type": "System.String",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "EcommerceAPI.Controllers.ClienteController",
     "Method": "BuscarProdutoPorId",
     "RelativePath": "api/Cliente/{id}",
     "HttpMethod": "GET",
@@ -177,7 +198,7 @@
     "Parameters": [
       {
         "Name": "prod",
-        "Type": "EcommerceAPI.Models.Produto",
+        "Type": "EcommerceAPI.DTO.CadastrarProtudoDTO",
         "IsRequired": true
       }
     ],
@@ -230,7 +251,23 @@
       },
       {
         "Name": "prod",
-        "Type": "EcommerceAPI.Models.Produto",
+        "Type": "EcommerceAPI.DTO.CadastrarProtudoDTO",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "EcommerceAPI.Controllers.ClienteController",
+    "Method": "BuscarPorNome",
+    "RelativePath": "buscar/{Nome}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "nome",
+        "Type": "System.String",
         "IsRequired": true
       }
     ],

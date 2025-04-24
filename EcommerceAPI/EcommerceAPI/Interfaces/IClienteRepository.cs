@@ -1,4 +1,5 @@
 ﻿using System.Security.Cryptography;
+using EcommerceAPI.DTO;
 using EcommerceAPI.Models;
 
 namespace EcommerceAPI.Interfaces
@@ -8,10 +9,11 @@ namespace EcommerceAPI.Interfaces
         List<Cliente> ListarTodos();
         Cliente BuscarPorId(int id);
         Cliente BuscarPorEmailSenha(string senha, string E_mail);
-        void Cadastrar(Cliente cliente);
+        void Cadastrar(CadastrarCliente cliente);
 
-        void Atualizar(int id, Cliente cliente);
+        void Atualizar(int id, CadastrarCliente cliente);
 
         void Deletar(int id);
+        List<Cliente> BuscarClientePorNome(string nome);
     }
 }

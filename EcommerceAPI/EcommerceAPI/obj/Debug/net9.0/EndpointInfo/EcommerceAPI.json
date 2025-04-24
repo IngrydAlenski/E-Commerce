@@ -130,6 +130,58 @@
         }
       }
     },
+    "/api/Cliente/{email}/{senha}": {
+      "get": {
+        "tags": [
+          "Cliente"
+        ],
+        "parameters": [
+          {
+            "name": "email",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "senha",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/buscar/{Nome}": {
+      "get": {
+        "tags": [
+          "Cliente"
+        ],
+        "parameters": [
+          {
+            "name": "nome",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
     "/api/Pagamento": {
       "get": {
         "tags": [
@@ -274,17 +326,17 @@
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/Produto"
+                "$ref": "#/components/schemas/CadastrarProtudoDTO"
               }
             },
             "text/json": {
               "schema": {
-                "$ref": "#/components/schemas/Produto"
+                "$ref": "#/components/schemas/CadastrarProtudoDTO"
               }
             },
             "application/*+json": {
               "schema": {
-                "$ref": "#/components/schemas/Produto"
+                "$ref": "#/components/schemas/CadastrarProtudoDTO"
               }
             }
           }
@@ -358,17 +410,17 @@
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/Produto"
+                "$ref": "#/components/schemas/CadastrarProtudoDTO"
               }
             },
             "text/json": {
               "schema": {
-                "$ref": "#/components/schemas/Produto"
+                "$ref": "#/components/schemas/CadastrarProtudoDTO"
               }
             },
             "application/*+json": {
               "schema": {
-                "$ref": "#/components/schemas/Produto"
+                "$ref": "#/components/schemas/CadastrarProtudoDTO"
               }
             }
           }
@@ -383,6 +435,36 @@
   },
   "components": {
     "schemas": {
+      "CadastrarProtudoDTO": {
+        "type": "object",
+        "properties": {
+          "nomeProduto": {
+            "type": "string",
+            "nullable": true
+          },
+          "descricaoProduto": {
+            "type": "string",
+            "nullable": true
+          },
+          "preco": {
+            "type": "number",
+            "format": "double"
+          },
+          "estoqueDisponivel": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "categoriaProduto": {
+            "type": "string",
+            "nullable": true
+          },
+          "imagemProduto": {
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
       "Cliente": {
         "type": "object",
         "properties": {
