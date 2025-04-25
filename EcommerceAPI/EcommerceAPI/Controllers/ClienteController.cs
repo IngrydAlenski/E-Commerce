@@ -28,7 +28,7 @@ namespace EcommerceAPI.Controllers
         }
 
         [HttpPost]
-        public IActionResult CadastrarCliente(CadastrarCliente cliente)
+        public IActionResult CadastrarCliente(CadastrarClienteDTO cliente)
         {
          ClienteRepository.Cadastrar(cliente);
 
@@ -59,7 +59,7 @@ namespace EcommerceAPI.Controllers
             return NoContent(); // 204 - Sucesso na exclusão
         }
         [HttpPut("{id}")]
-        public IActionResult AtualizarCliente(int id, CadastrarCliente cliente)
+        public IActionResult AtualizarCliente(int id, CadastrarClienteDTO cliente)
         {
             var clienteBuscado = ClienteRepository.BuscarPorId(id);
 

@@ -11,7 +11,7 @@
   },
   {
     "ContainingType": "EcommerceAPI.Controllers.ClienteController",
-    "Method": "CadastrarProduto",
+    "Method": "CadastrarCliente",
     "RelativePath": "api/Cliente",
     "HttpMethod": "POST",
     "IsController": true,
@@ -19,7 +19,7 @@
     "Parameters": [
       {
         "Name": "cliente",
-        "Type": "EcommerceAPI.Models.Cliente",
+        "Type": "EcommerceAPI.DTO.CadastrarClienteDTO",
         "IsRequired": true
       }
     ],
@@ -48,7 +48,7 @@
   },
   {
     "ContainingType": "EcommerceAPI.Controllers.ClienteController",
-    "Method": "BuscarProdutoPorId",
+    "Method": "BuscarClientePorId",
     "RelativePath": "api/Cliente/{id}",
     "HttpMethod": "GET",
     "IsController": true,
@@ -64,7 +64,7 @@
   },
   {
     "ContainingType": "EcommerceAPI.Controllers.ClienteController",
-    "Method": "DeletarProduto",
+    "Method": "DeletarCliente",
     "RelativePath": "api/Cliente/{id}",
     "HttpMethod": "DELETE",
     "IsController": true,
@@ -80,7 +80,7 @@
   },
   {
     "ContainingType": "EcommerceAPI.Controllers.ClienteController",
-    "Method": "AtualizarProduto",
+    "Method": "AtualizarCliente",
     "RelativePath": "api/Cliente/{id}",
     "HttpMethod": "PUT",
     "IsController": true,
@@ -93,7 +93,7 @@
       },
       {
         "Name": "cliente",
-        "Type": "EcommerceAPI.Models.Cliente",
+        "Type": "EcommerceAPI.DTO.CadastrarClienteDTO",
         "IsRequired": true
       }
     ],

@@ -2,6 +2,7 @@
 using EcommerceAPI.DTO;
 using EcommerceAPI.Interfaces;
 using EcommerceAPI.Models;
+using EcommerceAPI.ViewModels;
 
 namespace EcommerceAPI.Repositories
 
@@ -22,7 +23,7 @@ namespace EcommerceAPI.Repositories
             _context = context;
         }
 
-        public void Atualizar(int id, CadastrarCliente clientenovo) // Implementa
+        public void Atualizar(int id, CadastrarClienteDTO clientenovo) // Implementa
         {
             // Acho o cliente que desejo
             var clienteEncontrado = _context.Clientes.FirstOrDefault(c => c.IdCliente == id);
@@ -54,7 +55,7 @@ namespace EcommerceAPI.Repositories
         {
             //Encontrar o cliente que possui o email e senha fornecidos 
 
-            Cliente? clienteEncontrado = _context.Clientes.FirstOrDefault(c => c.Email == E_mail && c.senha);
+            Cliente? clienteEncontrado = _context.Clientes.FirstOrDefault(c => c.Email == E_mail && c.Senha==senha);
             return clienteEncontrado;
         }
 
@@ -62,12 +63,24 @@ namespace EcommerceAPI.Repositories
         {
             return _context.Clientes.FirstOrDefault(c => c.IdCliente == id);
         }
-
-        public void Cadastrar(CadastrarCliente cliente)
+         public void Cadastrar(CadastrarClienteDTO cliente)
         {
-            _context.Clientes.Add(cliente);
+            Cliente clientecadastro = new Cliente
+            {
+               NomeCompleto = cliente.NomeCompleto,
+               Email = cliente.Email,
+               Telefone = cliente.Telefone,
+               Endereco = cliente.Endereco,
+               DataCadastro = cliente.DataCadastro,                
+               Senha = cliente.Senha
+            };
+
+            _context.Clientes.Add(clientecadastro);
+
             _context.SaveChanges();
         }
+
+       
 
         public void Deletar(int id)
         {
@@ -80,9 +93,22 @@ namespace EcommerceAPI.Repositories
             _context.Clientes.Remove(clientebuscado);
             _context.SaveChanges();
         }
-        public List<Cliente> ListarTodos()
+        public List<ListarClienteViewModel> ListarTodos()
         {
-            return _context.Clientes.ToList();
+            return _context.Clientes
+                //Permite que eu selecione quais campos eu quero pegar
+                .Select(
+                c => new ListarClienteViewModel
+                {
+                   IdCliente = c.IdCliente,
+                   NomeCompleto = c.NomeCompleto,
+                   Email = c.Email,
+                   Telefone = c.Telefone,
+                   Endereco = c.Endereco,
+                   DataCadastro= c.DataCadastro
+
+                } )
+                .ToList();
         }
     }
 }

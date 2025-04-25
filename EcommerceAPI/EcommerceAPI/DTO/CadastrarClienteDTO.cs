@@ -1,6 +1,6 @@
 ﻿namespace EcommerceAPI.DTO
 {
-    public class CadastrarCliente
+    public class CadastrarClienteDTO
     {
         public string NomeCompleto { get; set; } = null!;
 

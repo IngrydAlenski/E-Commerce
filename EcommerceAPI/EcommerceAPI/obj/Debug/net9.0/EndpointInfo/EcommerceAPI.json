@@ -24,17 +24,17 @@
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/Cliente"
+                "$ref": "#/components/schemas/CadastrarClienteDTO"
               }
             },
             "text/json": {
               "schema": {
-                "$ref": "#/components/schemas/Cliente"
+                "$ref": "#/components/schemas/CadastrarClienteDTO"
               }
             },
             "application/*+json": {
               "schema": {
-                "$ref": "#/components/schemas/Cliente"
+                "$ref": "#/components/schemas/CadastrarClienteDTO"
               }
             }
           }
@@ -108,17 +108,17 @@
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/Cliente"
+                "$ref": "#/components/schemas/CadastrarClienteDTO"
               }
             },
             "text/json": {
               "schema": {
-                "$ref": "#/components/schemas/Cliente"
+                "$ref": "#/components/schemas/CadastrarClienteDTO"
               }
             },
             "application/*+json": {
               "schema": {
-                "$ref": "#/components/schemas/Cliente"
+                "$ref": "#/components/schemas/CadastrarClienteDTO"
               }
             }
           }
@@ -435,6 +435,37 @@
   },
   "components": {
     "schemas": {
+      "CadastrarClienteDTO": {
+        "type": "object",
+        "properties": {
+          "nomeCompleto": {
+            "type": "string",
+            "nullable": true
+          },
+          "email": {
+            "type": "string",
+            "nullable": true
+          },
+          "telefone": {
+            "type": "string",
+            "nullable": true
+          },
+          "endereco": {
+            "type": "string",
+            "nullable": true
+          },
+          "senha": {
+            "type": "string",
+            "nullable": true
+          },
+          "dataCadastro": {
+            "type": "string",
+            "format": "date",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
       "CadastrarProtudoDTO": {
         "type": "object",
         "properties": {
