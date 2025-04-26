@@ -78,19 +78,60 @@ namespace EcommerceAPI.Repositories
 
         }
 
-        public void CadastrarPedido(CadastrarPedidoDTO pedido)
+        public void CadastrarPedido(CadastrarPedidoDTO pedidoDTO)
         {
-            throw new NotImplementedException();
-        }
+            var pedido = new Pedido
+            {
+                DataPedido = pedidoDTO.DataPedido,
+                StatusPedido = pedidoDTO.StatusPedido,
+                ValorTotal = pedidoDTO.ValorTotal,
+                IdCliente = pedidoDTO.IdCliente,
 
+            };
+            //var pedidoEncontrado = _context.Pedidos.FirstOrDefault(c => c.IdPedido == id);
+
+            if (pedidoEncontrado == null)
+            {
+                throw new ArgumentException("Pedido não encontrado");
+            }
+
+            _context.Pedidos.Add(pedido);
+
+            _context.SaveChanges();
+
+            for (int i = 0; i < pedidoDto.Produtos.Count; i++)
+            {
+                var produto = _context.Produtos.Find(pedidoDto.Produtos[i]);
+
+                var itemPedido = new ItemPedido
+                {
+                    IdPedido = pedido.IdPedido,
+                    IdProduto = pedidoDto.Produtos[i],
+                };
+
+                _context.ItemPedidos.Add(itemPedido);
+
+                _context.SaveChanges();
+            }
+        }
         public void Deletar(int id)
         {
-            throw new NotImplementedException();
+            Pedido Pedidobuscado = _context.Pedidos.Find(id);
+
+            if (Pedidobuscado == null)
+            {
+                throw new ArgumentNullException("Pedido não encontrado");
+            }
+            _context.ItemPedidos.Remove(Pedidobuscado);
+            _context.SaveChanges();
         }
 
         public List<Pedido> ListarTodos()
         {
-            throw new NotImplementedException();
+            return _context.Pedidos
+                .Include(p => p.ItemPedidos)
+                .ThenIncclude(p => p.Produto).
+                ToList();
         }
-    }
+    };
 }

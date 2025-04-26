@@ -79,9 +79,6 @@ namespace EcommerceAPI.Repositories
 
             _context.SaveChanges();
         }
-
-       
-
         public void Deletar(int id)
         {
             Cliente clientebuscado = _context.Clientes.Find(id);

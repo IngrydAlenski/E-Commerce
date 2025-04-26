@@ -167,7 +167,7 @@
               "RelativeDocumentMoniker": "EcommerceAPI\\Repositories\\ClienteRepository.cs",
               "ToolTip": "C:\\Users\\FIC\\Desktop\\Ingryd\\E-Commerce\\EcommerceAPI\\EcommerceAPI\\Repositories\\ClienteRepository.cs",
               "RelativeToolTip": "EcommerceAPI\\Repositories\\ClienteRepository.cs",
-              "ViewState": "AgIAAD8AAAAAAAAAAAAowFQAAAAjAAAAAAAAAA==",
+              "ViewState": "AgIAADsAAAAAAAAAAAAQwD4AAAAJAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-04-16T22:22:56.98Z",
               "EditorCaption": ""
@@ -351,7 +351,8 @@
               "RelativeToolTip": "EcommerceAPI\\Models\\Produto.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAuwAYAAAAVAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-04-22T23:24:48.374Z"
+              "WhenOpened": "2025-04-22T23:24:48.374Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
@@ -363,7 +364,8 @@
               "RelativeToolTip": "EcommerceAPI\\Controllers\\ProdutoController.cs",
               "ViewState": "AgIAACEAAAAAAAAAAAA3wFAAAAABAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-04-14T23:17:06.013Z"
+              "WhenOpened": "2025-04-14T23:17:06.013Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
@@ -375,7 +377,8 @@
               "RelativeToolTip": "EcommerceAPI\\Interfaces\\IProtudoRepository.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAABUAAAAaAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-04-24T00:11:57.568Z"
+              "WhenOpened": "2025-04-24T00:11:57.568Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
@@ -387,7 +390,8 @@
               "RelativeToolTip": "EcommerceAPI\\Context\\EcommerceContext.cs",
               "ViewState": "AgIAAF8AAAAAAAAAAAAnwFoAAABFAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-04-22T23:24:18.624Z"
+              "WhenOpened": "2025-04-22T23:24:18.624Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
@@ -399,7 +403,8 @@
               "RelativeToolTip": "EcommerceAPI\\Models\\Pagamento.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAABMAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-04-18T00:42:24.493Z"
+              "WhenOpened": "2025-04-18T00:42:24.493Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
@@ -411,7 +416,8 @@
               "RelativeToolTip": "EcommerceAPI\\Repositories\\PagamentoRepository.cs",
               "ViewState": "AgIAACwAAAAAAAAAAAAwwC4AAABGAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-04-17T23:03:17.558Z"
+              "WhenOpened": "2025-04-17T23:03:17.558Z",
+              "EditorCaption": ""
             }
           ]
         }

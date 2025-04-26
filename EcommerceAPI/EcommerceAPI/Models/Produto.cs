@@ -22,6 +22,7 @@ public partial class Produto
 
     public string? Descricao { get; set; }
 
+    [JsonIgnore]
     public virtual ICollection<ItemPedido> ItemPedidos { get; set; } = new List<ItemPedido>();
   
 }

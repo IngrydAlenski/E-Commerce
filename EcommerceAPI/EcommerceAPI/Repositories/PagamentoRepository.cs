@@ -32,8 +32,10 @@ namespace EcommerceAPI.Repositories
 
             public Pagamento BuscarPorId(int id)
             {
+
             return _context.Pagamentos.FirstOrDefault(p => p.IdPagamento == id);
-        }
+
+            }
 
             public void Cadastrar(Pagamento pagamento)
             {

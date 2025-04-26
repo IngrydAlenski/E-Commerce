@@ -18,4 +18,7 @@ namespace EcommerceAPI.Controllers
             PedidoRepository = pedidoRepository;
         }
     }
+
+    [HttpPost]
+    
 }

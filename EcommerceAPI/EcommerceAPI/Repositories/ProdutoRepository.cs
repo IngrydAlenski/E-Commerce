@@ -7,7 +7,6 @@ using EcommerceAPI.Models;
 namespace EcommerceAPI.Repositories
 {
     public class ProdutoRepository : IProdutoRepository
-
     {
         // METODOS QUE ACESSAM O BANCO DE DADOS
 
@@ -38,12 +37,10 @@ namespace EcommerceAPI.Repositories
 
             _context.SaveChanges();
         }
-
         public Produto BuscarPorId(int id)
         {
           return _context.Produtos.FirstOrDefault(p => p.IdProduto == id);
         }
-
         public void Cadastrar(CadastrarProtudoDTO produto)
         {
             Produto produtocadastro = new Produto
@@ -60,7 +57,6 @@ namespace EcommerceAPI.Repositories
 
             _context.SaveChanges();
         }
-
         public void Deletar(int id)
         {
             Produto produtoencontrado = _context.Produtos.Find(id);
@@ -74,7 +70,6 @@ namespace EcommerceAPI.Repositories
 
             _context.SaveChanges();
         }
-
         public List<Produto> ListarTodos()
         {
             return _context.Produtos.ToList();
