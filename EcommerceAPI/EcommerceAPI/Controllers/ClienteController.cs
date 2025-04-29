@@ -3,6 +3,7 @@ using EcommerceAPI.DTO;
 using EcommerceAPI.Interfaces;
 using EcommerceAPI.Models;
 using EcommerceAPI.Repositories;
+using EcommerceAPI.Services;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Identity.Client;
@@ -15,10 +16,14 @@ namespace EcommerceAPI.Controllers
     {
         private IClienteRepository ClienteRepository;
 
+        //Instanciar o PasswordService
+         private PasswordServices passwordServices =  new PasswordServices();
+
         public ClienteController(IClienteRepository clienteRepository)
         {
             ClienteRepository = clienteRepository;
         }
+
         [HttpGet]
 
         public IActionResult ListarTodos()
@@ -30,8 +35,6 @@ namespace EcommerceAPI.Controllers
         [HttpPost]
         public IActionResult CadastrarCliente(CadastrarClienteDTO cliente)
         {
-         ClienteRepository.Cadastrar(cliente);
-
             return Created();
         }
 

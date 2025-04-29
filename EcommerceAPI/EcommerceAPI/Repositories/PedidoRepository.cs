@@ -3,6 +3,7 @@ using EcommerceAPI.Context;
 using EcommerceAPI.DTO;
 using EcommerceAPI.Interfaces;
 using EcommerceAPI.Models;
+using Microsoft.EntityFrameworkCore;
 
 namespace EcommerceAPI.Repositories
 {
@@ -88,25 +89,20 @@ namespace EcommerceAPI.Repositories
                 IdCliente = pedidoDTO.IdCliente,
 
             };
-            //var pedidoEncontrado = _context.Pedidos.FirstOrDefault(c => c.IdPedido == id);
-
-            if (pedidoEncontrado == null)
-            {
-                throw new ArgumentException("Pedido não encontrado");
-            }
+            
 
             _context.Pedidos.Add(pedido);
 
             _context.SaveChanges();
 
-            for (int i = 0; i < pedidoDto.Produtos.Count; i++)
+            for (int i = 0; i < pedidoDTO.Produtos.Count; i++)
             {
-                var produto = _context.Produtos.Find(pedidoDto.Produtos[i]);
+                var produto = _context.Produtos.Find(pedidoDTO.Produtos[i]);
 
                 var itemPedido = new ItemPedido
                 {
                     IdPedido = pedido.IdPedido,
-                    IdProduto = pedidoDto.Produtos[i],
+                    IdProduto = pedidoDTO.Produtos[i],
                 };
 
                 _context.ItemPedidos.Add(itemPedido);
@@ -122,7 +118,7 @@ namespace EcommerceAPI.Repositories
             {
                 throw new ArgumentNullException("Pedido não encontrado");
             }
-            _context.ItemPedidos.Remove(Pedidobuscado);
+            _context.Pedidos.Remove(Pedidobuscado);
             _context.SaveChanges();
         }
 
@@ -130,8 +126,8 @@ namespace EcommerceAPI.Repositories
         {
             return _context.Pedidos
                 .Include(p => p.ItemPedidos)
-                .ThenIncclude(p => p.Produto).
+                .ThenInclude(p => p.Produto).
                 ToList();
         }
-    };
+    }
 }
