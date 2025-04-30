@@ -12,9 +12,11 @@
 
 //ASSSingleton - 
 
+using System.Text;
 using EcommerceAPI.Context;
 using EcommerceAPI.Interfaces;
 using EcommerceAPI.Repositories;
+using Microsoft.IdentityModel.Tokens;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -31,6 +33,27 @@ builder.Services.AddTransient<IClienteRepository, ClienteRepository>();
 builder.Services.AddTransient<IPagamentoRepository, PagamentoRepository>();
 builder.Services.AddTransient<IItemPedidoRepository,ItemPedidoRepository>();
 
+
+//Configuracao do token
+builder.Services.AddAuthentication("Bearer")
+    .AddJwtBearer("Bearer", options =>
+    {
+        options.TokenValidationParameters = new TokenValidationParameters
+        {
+            ValidateIssuer = true,
+            ValidateAudience = true,
+            ValidateLifetime = true,
+            ValidateIssuerSigningKey = true,
+            ValidIssuer = "Eccomerce",
+            ValidAudience = "Eccomerce",
+            IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes("Minha-chave-ultra-mega-secreta-senai"))
+        };
+    });
+//Autorizar o usuario 
+builder.Services.AddAuthentication();
+
+
+
 var app = builder.Build();
 
 //////////////////////////////////////////////
@@ -39,6 +62,9 @@ app.UseSwaggerUI();
 //////////////////////////////////////////////
 
 app.MapControllers();
+
+app.UseAuthentication();
+app.UseAuthorization();
 
 app.Run();
 

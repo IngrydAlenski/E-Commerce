@@ -19,6 +19,6 @@ namespace EcommerceAPI.Controllers
         }
     }
 
-    [HttpPost]
+   // [HttpPost]
     
 }

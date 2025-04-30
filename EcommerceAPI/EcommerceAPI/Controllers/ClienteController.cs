@@ -4,6 +4,7 @@ using EcommerceAPI.Interfaces;
 using EcommerceAPI.Models;
 using EcommerceAPI.Repositories;
 using EcommerceAPI.Services;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Identity.Client;
@@ -17,7 +18,7 @@ namespace EcommerceAPI.Controllers
         private IClienteRepository ClienteRepository;
 
         //Instanciar o PasswordService
-         private PasswordServices passwordServices =  new PasswordServices();
+       
 
         public ClienteController(IClienteRepository clienteRepository)
         {
@@ -25,7 +26,7 @@ namespace EcommerceAPI.Controllers
         }
 
         [HttpGet]
-
+        [Authorize]
         public IActionResult ListarTodos()
         {
             return Ok(ClienteRepository.ListarTodos());
@@ -35,6 +36,7 @@ namespace EcommerceAPI.Controllers
         [HttpPost]
         public IActionResult CadastrarCliente(CadastrarClienteDTO cliente)
         {
+            ClienteRepository.Cadastrar(cliente);
             return Created();
         }
 
@@ -75,17 +77,22 @@ namespace EcommerceAPI.Controllers
         }
 
 
-        [HttpGet("{email}/{senha}")]
-        public IActionResult Login(string email, string senha)
+        [HttpPost("Login")]
+        public IActionResult Login(LoginDTO login)
         {
-            var cliente = ClienteRepository.BuscarPorEmailSenha(email, senha);
+            var cliente = ClienteRepository.BuscarPorEmailSenha(login.Senha, login.Email);
 
             if (cliente == null)
             {
-                return NotFound();
+                return Unauthorized("Email ou Senha invalidos!");
             }                
 
-            return Ok(cliente);
+
+            var tokenService = new TokenService();
+            var token = tokenService.GenerateToken(cliente.Email);
+
+
+            return Ok(token);
         }
         [HttpGet("/buscar/{Nome}")]
 

@@ -126,7 +126,7 @@ namespace EcommerceAPI.Repositories
         {
             return _context.Pedidos
                 .Include(p => p.ItemPedidos)
-                .ThenInclude(p => p.Produto).
+                .ThenInclude(p => p.IdProdutoNavigation).
                 ToList();
         }
     }

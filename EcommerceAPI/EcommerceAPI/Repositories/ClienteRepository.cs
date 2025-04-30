@@ -56,8 +56,19 @@ namespace EcommerceAPI.Repositories
         {
             //Encontrar o cliente que possui o email e senha fornecidos 
 
-            Cliente? clienteEncontrado = _context.Clientes.FirstOrDefault(c => c.Email == E_mail && c.Senha==senha);
-            return clienteEncontrado;
+            Cliente? clienteEncontrado = _context.Clientes.FirstOrDefault(c => c.Email == E_mail);
+
+            //Caso nao encontre retorne nulo
+            if (clienteEncontrado == null)  
+            return null;
+
+            var passwordService = new PasswordServices();
+
+            //Verificar se a senha e o mesmo hash
+            var resultado = passwordService.VerificarSenha(clienteEncontrado, senha);
+
+            if (resultado == true) return clienteEncontrado;
+            return null;
         }
 
         public Cliente BuscarPorId(int id)

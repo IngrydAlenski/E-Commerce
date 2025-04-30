@@ -330,3 +330,4 @@ C:\Users\FIC\Desktop\Ingryd\E-Commerce\EcommerceAPI\EcommerceAPI\bin\Debug\net9.
 C:\Users\FIC\Desktop\Ingryd\E-Commerce\EcommerceAPI\EcommerceAPI\bin\Debug\net9.0\Swashbuckle.AspNetCore.SwaggerUI.dll
 C:\Users\FIC\Desktop\Ingryd\E-Commerce\EcommerceAPI\EcommerceAPI\obj\Debug\net9.0\EcommerceAPI.MvcApplicationPartsAssemblyInfo.cs
 C:\Users\FIC\Desktop\Ingryd\E-Commerce\EcommerceAPI\EcommerceAPI\obj\Debug\net9.0\staticwebassets.upToDateCheck.txt
+C:\Users\FIC\Desktop\Ingryd\E-Commerce\EcommerceAPI\EcommerceAPI\bin\Debug\net9.0\Microsoft.AspNetCore.Authentication.JwtBearer.dll
